@@ -13,7 +13,7 @@ const Welcome = () => {
 
   return (
     <LinearGradient
-      colors={["#CDEBF3", "#B3B3B3"]}
+      colors={["#CDEBF3", "#fff"]}
       className="p-4 flex-col justify-between h-full"
     >
       <View className="mt-14">
@@ -31,10 +31,10 @@ const Welcome = () => {
       </View>
       <View className="mb-16">
         <Text className="mb-2">Estudiante UNMSM,</Text>
-        <Button onPress={() => push("/auth")}>Continuar</Button>
+        <Button onPress={() => push("/(auth)/login")}>Continuar</Button>
         <View className="flex-row justify-center items-center mt-3">
           <Text>¿No tienes una cuenta?, </Text>
-          <Link href="/auth" className="text-primary">
+          <Link href="/(auth)/register" className="text-primary underline">
             únete
           </Link>
         </View>
