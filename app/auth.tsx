@@ -1,13 +1,13 @@
-import Welcome from "@/components/Welcome";
+import Auth from "@/components/Auth";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const WelcomeScreen = () => {
+const AuthPage = () => {
   return (
     <SafeAreaView>
-      <Welcome />
+      <Auth />
     </SafeAreaView>
   );
 };
 
-export default WelcomeScreen;
+export default AuthPage;

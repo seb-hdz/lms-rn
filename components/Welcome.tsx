@@ -1,14 +1,22 @@
 import React from "react";
 import { View } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { Link, router } from "expo-router";
+
 import Text from "./ui/Text";
 import Button from "./ui/Button";
 
 import LogoSVG from "assets/images/logo.svg";
 
 const Welcome = () => {
+  const { push } = router;
+
   return (
-    <View className="p-4 flex-col justify-between h-full">
-      <View>
+    <LinearGradient
+      colors={["#CDEBF3", "#B3B3B3"]}
+      className="p-4 flex-col justify-between h-full"
+    >
+      <View className="mt-14">
         <View className="flex-row justify-center mb-10">
           <LogoSVG />
         </View>
@@ -21,15 +29,17 @@ const Welcome = () => {
           </Text>
         </View>
       </View>
-      <View>
+      <View className="mb-16">
         <Text className="mb-2">Estudiante UNMSM,</Text>
-        <Button>Continuar</Button>
-        <View className="flex-row justify-center mt-3">
+        <Button onPress={() => push("/auth")}>Continuar</Button>
+        <View className="flex-row justify-center items-center mt-3">
           <Text>¿No tienes una cuenta?, </Text>
-          <Text className="text-primary">únete</Text>
+          <Link href="/auth" className="text-primary">
+            únete
+          </Link>
         </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 

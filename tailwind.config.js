@@ -16,6 +16,7 @@ const dreamKitty = {
   dark: {},
 };
 
+// TODO: switch palette programmatically
 const palette = dreamKitty.light;
 
 const colorTheme = {
@@ -30,6 +31,8 @@ const colorTheme = {
   danger: palette.red,
   disabled: palette.black15,
   dimmed: palette.black50,
+  // borders
+  border: palette.black20,
 };
 
 /** @type {import('tailwindcss').Config} */
