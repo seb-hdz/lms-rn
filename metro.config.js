@@ -1,3 +1,4 @@
+/* eslint-env node */
 // Learn more https://docs.expo.io/guides/customizing-metro
 const { getDefaultConfig } = require("expo/metro-config");
 
@@ -14,7 +15,7 @@ const metroConfig = async () => {
     },
     resolver: {
       assetExts: assetExts.filter((ext) => ext !== "svg"),
-      sourceExts: [...sourceExts, "svg", "cjs"],
+      sourceExts: [...sourceExts, "svg", "cjs", "mjs"],
     },
   };
 };

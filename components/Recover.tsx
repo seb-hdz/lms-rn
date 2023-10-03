@@ -1,14 +1,14 @@
 import React from "react";
 import Text from "./ui/Text";
-import { ScrollView, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import GoBack from "./global/GoBack";
+import { ScrollView, View } from "react-native";
 import TextInput from "./ui/TextInput";
+import Checkbox from "./ui/Checkbox";
 import Button from "./ui/Button";
 import { Link } from "expo-router";
-import AuthProviders from "./AuthProviders";
 
-const Login = () => {
+const Recover = () => {
   return (
     <LinearGradient
       colors={["#CDEBF3", "#B3B3B3"]}
@@ -18,9 +18,18 @@ const Login = () => {
         <GoBack />
         <ScrollView className="mt-10">
           <Text className="text-3xl text-primary mb-8" fontWeight="semiBold">
-            Ingresa
+            ¿Olvidaste tu contraseña?
           </Text>
-          <View className="p-3 border border-border rounded-2xl mb-8">
+          <View className="p-3 border border-border rounded-2xl mb-4">
+            <TextInput label="DNI o CE" placeholder="76543210" />
+            <View className="mt-4" />
+            <TextInput
+              label="Código UNMSM"
+              placeholder="22200000"
+              maxLength={8}
+              keyboardType="number-pad"
+            />
+            <View className="mt-4" />
             <TextInput
               label="Email UNMSM"
               placeholder="myemail@unmsm.edu.pe"
@@ -33,19 +42,16 @@ const Login = () => {
               secureTextEntry
             />
           </View>
-          <Button className="mb-2">Ingresar</Button>
-          <Link
-            href="/(auth)/recover"
-            className="text-primary underline text-center"
-          >
-            ¿Olvidaste tu contraseña?
-          </Link>
-          <View className="my-5 bg-border h-[1]" />
-          <AuthProviders />
-          <View className="flex flex-row justify-center items-center mt-8">
-            <Text>¿No tienes una cuenta?, </Text>
-            <Link href="/register" replace className="text-primary underline">
-              únete
+          <Checkbox label="Estoy de acuerdo con los términos de privacidad de UNMSM." />
+          <Button className="mb-2 mt-8">Registrarse</Button>
+          <View className="flex flex-row justify-center items-center">
+            <Text>¿Ya tienes una cuenta?, </Text>
+            <Link
+              href="/(auth)/login"
+              replace
+              className="text-primary underline"
+            >
+              ingresa
             </Link>
           </View>
         </ScrollView>
@@ -54,4 +60,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Recover;

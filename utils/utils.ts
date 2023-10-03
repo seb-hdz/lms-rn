@@ -1,3 +1,3 @@
-export const twJoin = (...classNames: (string | undefined)[]) => {
+export const jn = (...classNames: (string | undefined)[]) => {
   return classNames.filter(Boolean).join(" ").trim();
 };

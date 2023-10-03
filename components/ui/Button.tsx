@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { ButtonProps as RNButtonProps } from "react-native";
 import Text from "./Text";
-import { twJoin } from "@/utils/utils";
+import { jn } from "@/utils/utils";
 import { FontWeight } from "./Text";
 
 export interface ButtonProps extends Omit<RNButtonProps, "title"> {
@@ -30,10 +30,7 @@ const Button = (props: ButtonProps) => {
     >
       {!noText ? (
         <Text
-          className={twJoin(
-            "text-center text-onPrimary text-lg",
-            textClassName
-          )}
+          className={jn("text-center text-onPrimary text-lg", textClassName)}
           fontWeight={fontWeight}
         >
           {children}

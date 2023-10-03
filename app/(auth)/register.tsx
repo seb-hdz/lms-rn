@@ -1,4 +1,4 @@
-import Register from "@/components/Register";
+import Register from "@/components/auth/Register/Register";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 

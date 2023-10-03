@@ -1,4 +1,4 @@
-import Login from "@/components/Login";
+import Login from "@/components/auth/Login/Login";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 

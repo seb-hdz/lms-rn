@@ -1,8 +1,10 @@
-import React from "react";
+import CheckSVG from "assets/icons/check.svg";
+import React, { forwardRef } from "react";
 import { View, TouchableOpacity } from "react-native";
+
 import Text from "./Text";
 
-import CheckSVG from "assets/icons/check.svg";
+import { jn } from "@/utils/utils";
 
 export interface CheckboxProps {
   className?: string;
@@ -11,12 +13,12 @@ export interface CheckboxProps {
   onToggle?: (active: boolean) => void;
   active?: boolean;
   disabled?: boolean;
-  error?: string;
+  errorMessage?: string;
 }
 
-const Checkbox = (props: CheckboxProps) => {
+const Checkbox = forwardRef((props: CheckboxProps, ref) => {
   const { className, textClassName, label } = props;
-  const { onToggle, active = false, disabled, error } = props;
+  const { onToggle, active = false, disabled, errorMessage } = props;
 
   return (
     <>
@@ -25,14 +27,23 @@ const Checkbox = (props: CheckboxProps) => {
         disabled={disabled}
         className="flex flex-row items-center gap-x-4"
       >
-        <View className="h-4 w-4 items-center justify-center bg-primary rounded">
+        <View
+          className={jn(
+            "h-4 w-4 items-center justify-center rounded",
+            active ? "bg-primary" : "border-2 border-primary"
+          )}
+        >
           {active ? <CheckSVG /> : null}
         </View>
         <Text className={textClassName}>{label}</Text>
       </TouchableOpacity>
-      {error ? <Text className="text-danger">{error}</Text> : null}
+      {errorMessage?.length ? (
+        <Text className="text-danger" fontWeight="light">
+          {errorMessage}
+        </Text>
+      ) : null}
     </>
   );
-};
+});
 
 export default Checkbox;
