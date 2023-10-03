@@ -4,11 +4,12 @@ const dreamKitty = {
     kBlue: "#448fff", // secondary
     kRed: "#ec6666", // danger
     kGray: "#f2f2f2",
-    kWhite: "#f6f6f6",
+    kWhite: "#fafafa",
     kBlack: "#403f4c",
     kBlack10: "#f8f9fa",
-    kBlack20: "#d9d9db", // borders
     kBlack15: "#e2e2e4", // disabled
+    kBlack20: "#d9d9db", // borders
+    kBlack35: "#bcbcc0",
     kBlack50: "#868e96",
     kBlack90: "#53525e",
   },

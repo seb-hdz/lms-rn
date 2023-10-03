@@ -4,18 +4,26 @@ import { router } from "expo-router";
 
 import Text from "../ui/Text";
 
-import BackArrowSVG from "assets/icons/back-arrow.svg";
+import ChevronSVG from "assets/icons/chevron.svg";
+import { jn } from "@/utils/utils";
 
-const GoBack = () => {
+interface GoBackProps {
+  className?: string;
+  iconClassName?: string;
+  showText?: boolean;
+}
+
+const GoBack = (props: GoBackProps) => {
+  const { className, iconClassName, showText = true } = props;
   const { back } = router;
 
   return (
     <TouchableOpacity
-      className="flex-row items-center gap-x-2"
+      className={jn("GoBack", "flex-row items-center gap-x-2", className)}
       onPress={() => back()}
     >
-      <BackArrowSVG />
-      <Text fontWeight="medium">Atrás</Text>
+      <ChevronSVG className={iconClassName} />
+      {showText ? <Text fontWeight="medium">Atrás</Text> : null}
     </TouchableOpacity>
   );
 };

@@ -1,13 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LinearGradient } from "expo-linear-gradient";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import React from "react";
-import {
-  useForm,
-  FormProvider,
-  SubmitErrorHandler,
-  Controller,
-} from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
+import { SubmitErrorHandler, Controller } from "react-hook-form";
 import { Keyboard, ScrollView, View } from "react-native";
 
 import { LoginSchema, loginSchema } from "./Login.helpers";
@@ -16,10 +12,13 @@ import Button from "../../ui/Button";
 import Text from "../../ui/Text";
 import TextInput from "../../ui/TextInput";
 import AuthProviders from "../AuthProviders";
+import useAuth from "@/hooks/useAuth";
 
 const Login = () => {
+  const { push } = useRouter();
+  const { signInWithAccount } = useAuth();
   const loginFormMethods = useForm<LoginSchema>({
-    mode: "onChange",
+    mode: "onBlur",
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
@@ -30,9 +29,11 @@ const Login = () => {
   const { errors } = formState;
 
   const onSubmit = async (values: LoginSchema) => {
-    console.log({ values });
+    const { email, password } = values;
     try {
       Keyboard.dismiss();
+      await signInWithAccount(email, password);
+      push("/(home)/home");
     } catch (err) {
       console.log(err);
     }

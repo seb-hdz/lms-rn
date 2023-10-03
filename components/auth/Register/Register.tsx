@@ -1,13 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LinearGradient } from "expo-linear-gradient";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import React from "react";
-import {
-  FormProvider,
-  useForm,
-  Controller,
-  SubmitErrorHandler,
-} from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
+import { Controller, SubmitErrorHandler } from "react-hook-form";
 import { Keyboard, ScrollView, View } from "react-native";
 
 import { RegisterSchema, registerSchema } from "./Register.helpers";
@@ -16,8 +12,10 @@ import Button from "../../ui/Button";
 import Checkbox from "../../ui/Checkbox";
 import Text from "../../ui/Text";
 import TextInput from "../../ui/TextInput";
+import useAuth from "@/hooks/useAuth";
 
 const Register = () => {
+  const { push } = useRouter();
   const registerFormMethods = useForm<RegisterSchema>({
     mode: "onBlur",
     resolver: zodResolver(registerSchema),
@@ -29,19 +27,22 @@ const Register = () => {
       terms: false,
     },
   });
+  const { registerWithAccount } = useAuth();
   const { setValue, control, handleSubmit, formState, watch } =
     registerFormMethods;
   const { errors } = formState;
-  const isAcceptingTerms = watch("terms");
+  const termsAccepted = watch("terms");
 
   const onToggleTerms = (active: boolean) => {
     setValue("terms", active);
   };
 
   const onSubmit = async (values: RegisterSchema) => {
-    console.log({ values });
+    const { email, password } = values;
     try {
       Keyboard.dismiss();
+      await registerWithAccount(email, password);
+      push("/(home)/home");
     } catch (err) {
       console.log(err);
     }
@@ -125,11 +126,11 @@ const Register = () => {
               />
             </View>
             <Checkbox
-              active={isAcceptingTerms}
+              active={termsAccepted}
               onToggle={onToggleTerms}
               label="Estoy de acuerdo con los términos de privacidad de UNMSM."
               errorMessage={
-                !isAcceptingTerms
+                !termsAccepted
                   ? "Debes aceptar los términos de privacidad de UNMSM"
                   : ""
               }

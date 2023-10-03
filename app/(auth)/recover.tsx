@@ -2,7 +2,7 @@ import Recover from "@/components/Recover";
 import React from "react";
 import { SafeAreaView } from "react-native";
 
-const RecoverPage = () => {
+const RecoverScreen = () => {
   return (
     <SafeAreaView>
       <Recover />
@@ -10,4 +10,4 @@ const RecoverPage = () => {
   );
 };
 
-export default RecoverPage;
+export default RecoverScreen;

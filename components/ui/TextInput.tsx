@@ -17,7 +17,13 @@ const TextInput = forwardRef<RNTextInput, TextInputProps>((props, ref) => {
     <View className={className}>
       {label ? <Text className="mb-2">{label}</Text> : null}
       <View className="p-3 border border-border rounded-lg">
-        <RNTextInput ref={ref} cursorColor="#FB4478" {...rest} />
+        <RNTextInput
+          ref={ref}
+          // TODO: add colors from palette or tailwind
+          selectionColor="#FB4478" // primary
+          placeholderTextColor="#BCBCC0" // black35
+          {...rest}
+        />
       </View>
       {errorMessage ? (
         <Text fontWeight="light" className="text-danger">

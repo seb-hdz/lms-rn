@@ -1,4 +1,9 @@
 module.exports = {
   root: true,
-  extends: ["universe/native"],
+  extends: [
+    "eslint:recommended",
+    "prettier",
+    "eslint-config-universe",
+    "universe/native",
+  ],
 };

@@ -1,11 +1,7 @@
 import { auth } from "@/config/firebase.config";
 import { useAuthStore } from "@/stores/auth.store";
-import {
-  User,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { getRedirectResult, signInWithRedirect } from "firebase/auth";
+import { User, createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { useCallback, useMemo } from "react";
 
@@ -44,6 +40,7 @@ const useAuth = () => {
             email,
             password
           );
+          console.log({ credentials });
           return credentials;
         } catch (err) {
           console.log({ err });

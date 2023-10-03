@@ -1,13 +1,13 @@
-import Login from "@/components/auth/Login/Login";
+import Dashboard from "@/components/dashboard/Dashboard";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const LoginScreen = () => {
+const DashboardScreen = () => {
   return (
     <SafeAreaView>
-      <Login />
+      <Dashboard />
     </SafeAreaView>
   );
 };
 
-export default LoginScreen;
+export default DashboardScreen;

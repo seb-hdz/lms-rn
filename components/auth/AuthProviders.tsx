@@ -5,11 +5,13 @@ import Button from "../ui/Button";
 const AuthProviders = () => {
   return (
     <View className="flex flex-col gap-y-3">
-      <Button className="rounded-full">Continuar con Google</Button>
-      <Button className="rounded-full bg-secondary">
+      <Button className="rounded-full" disabled>
+        Continuar con Google
+      </Button>
+      <Button className="rounded-full bg-secondary" disabled>
         Continuar con Facebook
       </Button>
-      <Button className="rounded-full bg-black90">
+      <Button className="rounded-full bg-black90" disabled>
         Continuar con código OTP
       </Button>
     </View>

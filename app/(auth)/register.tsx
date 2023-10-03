@@ -2,7 +2,7 @@ import Register from "@/components/auth/Register/Register";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const RegisterPage = () => {
+const RegisterScreen = () => {
   return (
     <SafeAreaView>
       <Register />
@@ -10,4 +10,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default RegisterScreen;

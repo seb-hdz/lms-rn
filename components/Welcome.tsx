@@ -1,15 +1,23 @@
 import React from "react";
 import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Link, router } from "expo-router";
+import { Link, useRouter } from "expo-router";
 
 import Text from "./ui/Text";
 import Button from "./ui/Button";
 
 import LogoSVG from "assets/images/logo.svg";
+import { useAuthStore } from "@/stores/auth.store";
+import { useEffect } from "react";
 
 const Welcome = () => {
-  const { push } = router;
+  const { push } = useRouter();
+  const uid = useAuthStore((s) => s.uid);
+
+  useEffect(() => {
+    if (!uid) return;
+    push("/(home)/home");
+  }, []);
 
   return (
     <LinearGradient
