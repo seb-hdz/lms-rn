@@ -2,11 +2,12 @@ import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { ButtonProps as RNButtonProps } from "react-native";
 import Text from "./Text";
-import { twJoin } from "@/utils/utils";
+import { jn } from "@/utils/utils";
 import { FontWeight } from "./Text";
 
 export interface ButtonProps extends Omit<RNButtonProps, "title"> {
   className?: string;
+  textClassName?: string;
   children: React.ReactNode;
   scheme?: "primary" | "secondary";
   variant?: "filled" | "outline" | "transparent";
@@ -15,7 +16,8 @@ export interface ButtonProps extends Omit<RNButtonProps, "title"> {
 }
 
 const Button = (props: ButtonProps) => {
-  const { className, children, onPress, ...rest } = props;
+  const { className, textClassName, children, onPress, ...rest } = props;
+  // TODO: Implement scheme and variant
   const { variant = "filled", scheme = "primary" } = props;
   const { fontWeight = "medium" } = props;
   const { noText = false } = props;
@@ -28,7 +30,7 @@ const Button = (props: ButtonProps) => {
     >
       {!noText ? (
         <Text
-          className={twJoin("text-center text-onPrimary text-lg", className)}
+          className={jn("text-center text-onPrimary text-lg", textClassName)}
           fontWeight={fontWeight}
         >
           {children}
